@@ -6,6 +6,7 @@
 
 ## 二、训练数据准备和预处理
 
-简述：BERT预训练由两个任务组成：NSP和MLM，因此数据预处理需要完成这两个任务的需求
+现在的代码将所有训练文本归在一个文件中，分为train.txt, valid.txt, test.txt
+每个txt中包含所有文档的内容，每一行一个paragraph。
 
-### 2.1 NSP数据预处理
+考虑到所有原始数据是docx/doc格式，因此需要把所有docx/doc转换为txt
