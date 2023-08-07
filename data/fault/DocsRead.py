@@ -84,9 +84,47 @@ class DocxReader():
             nspCorpus.append([0, sentence, sentences[second]])
         return nspCorpus
 
+
+class TxtReader():
+    def __init__(self, filepath):
+        """
+        :param filepath: 源文件/路径
+        :param destpath: 目标路径
+        """
+        self.filepath = filepath
+        self.docs = []
+
+    def __repr__(self):
+        return "word文件读取类"
+
+    def convert2pretrain(self, destpath):
+        if not os.path.exists(destpath):
+            os.mkdir(destpath)
+
+        if os.path.isfile(self.filepath):
+            paras = open(self.filepath, 'r', encoding='utf8')
+            destfile = open(os.path.join(destpath, '1.txt'), 'w', encoding='utf8')
+            for para in paras:
+                para = para.strip()
+                if len(para) > 0:
+                     destfile.write(para+"\n")
+            destfile.close()
+        else:
+            filelist = os.listdir(self.filepath)
+            for ids, filename in enumerate(filelist):
+                destfile = open(os.path.join(destpath, str(ids)+'.txt'), 'w', encoding='utf8')
+                paras = open(os.path.join(self.filepath, filename), 'r', encoding='utf8')
+
+                for para in paras:
+                    para = para.strip()
+                    if len(para) > 0:
+                        destfile.write(para+'\n')
+                destfile.close()
+
+
 if __name__ == '__main__':
     path = 'words/file1.docx'
     desePath = './corpus'
-    docReader = DocxReader('words')
+    docReader = TxtReader('G:/pretrain-bert/data/fault/words')
     # docReader.process(desePath)
     docReader.convert2pretrain('./txt')

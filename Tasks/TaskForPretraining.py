@@ -304,8 +304,6 @@ def pretty_print(token_ids, logits, pred_idx, itos, sentences, language):
 if __name__ == '__main__':
     config = ModelConfig()
     train(config)
-    sentences_1 = ["I no longer love her, true, but perhaps I love her.",
-                   "Love is so short and oblivion so long."]
-    sentences_2 = ["十年生死两茫茫。不思量。自难忘。千里孤坟，无处话凄凉。",
-                   "红酥手。黄藤酒。满园春色宫墙柳。"]
-    inference(config, sentences_2, masked=False, language='zh',random_state=2022)
+    sentences_1 = ["案例2579故障设备泵,案例2579设备名称苯乙烯装置热载体泵P41124A,案例2579案例定义成功案例,",
+                   "有多少案例故障设备是压缩机"]
+    inference(config, sentences_1, masked=False, language='zh',random_state=2022)

@@ -1,5 +1,6 @@
 *.bin
 *.pt
 *.pth
+*.txt
 logs
 cache

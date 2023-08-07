@@ -1,10 +1,16 @@
+import os
 import docx
 from transformers import AutoTokenizer
 
-docs = docx.Document("../data/fault/words/file1.docx")
+path = "../data/fault/txt"
+filelist = os.listdir(path)
 text = []
-for para in docs.paragraphs:
-    text.append(para.text)
+for file in filelist:
+    file = open(os.path.join(path, file), 'r', encoding='utf8')
+    for line in file:
+        line = line.strip()
+        if len(line) > 1:
+            text.append(line)
 
 bertTokenizer = AutoTokenizer.from_pretrained('./bert')
 
